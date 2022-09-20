@@ -19,7 +19,7 @@ function Modal({ title, children, isOpen, setIsOpen }) {
     if (!isOpen) {
       modal?.hide();
     }
-  }, [isOpen]);
+  }, [isOpen, modal]);
 
   return (
     <div className="modal fade" tabIndex="-1" ref={modalEl} onClick={setIsOpen}>
