@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import AuthLayout from "../layouts/auth/AuthLayout";
-// import Header from "../layouts/header/Header";
 import FriendPage from "../pages/FriendPage";
 import LoginPage from "../pages/LoginPage";
 import PostPage from "../pages/PostPage";
@@ -16,6 +15,8 @@ function Router() {
           <Route path="/" element={<PostPage />} />
           <Route path="/friend" element={<FriendPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/:id" element={<ProfilePage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       ) : (
         <>

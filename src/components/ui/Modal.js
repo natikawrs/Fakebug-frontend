@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Modal as BsModal } from "bootstrap";
 
-function Modal({ title, children, isOpen, setIsOpen }) {
+function Modal({ title, children, open, onClose }) {
   const modalEl = useRef();
   //   const obj = { current: undefined };
 
@@ -13,16 +13,16 @@ function Modal({ title, children, isOpen, setIsOpen }) {
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
+    if (open) {
       modal?.show();
     }
-    if (!isOpen) {
+    if (!open) {
       modal?.hide();
     }
-  }, [isOpen, modal]);
+  }, [open, modal]);
 
   return (
-    <div className="modal fade" tabIndex="-1" ref={modalEl} onClick={setIsOpen}>
+    <div className="modal fade" tabIndex="-1" ref={modalEl} onClick={onClose}>
       <div
         className="modal-dialog modal-dialog-centered"
         onClick={(e) => e.stopPropagation()}
@@ -34,7 +34,7 @@ function Modal({ title, children, isOpen, setIsOpen }) {
             <button
               type="button"
               className="btn-close"
-              onClick={setIsOpen}
+              onClick={onClose}
             ></button>
           </div>
           <div className="modal-body"> {children}</div>

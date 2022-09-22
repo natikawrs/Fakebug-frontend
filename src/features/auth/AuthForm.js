@@ -20,7 +20,7 @@ function AuthForm() {
           Create New Account
         </button>
       </div>
-      <Modal title="Sign up" isOpen={isOpen} setIsOpen={() => setIsOpen(false)}>
+      <Modal title="Sign up" open={isOpen} onClose={() => setIsOpen(false)}>
         <RegisterForm setIsOpen={() => setIsOpen(false)} />
       </Modal>
     </div>
