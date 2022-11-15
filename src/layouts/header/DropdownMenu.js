@@ -2,24 +2,25 @@ import { Link } from "react-router-dom";
 import Avatar from "../../components/ui/Avatar";
 import { useAuth } from "../../contexts/AuthContext";
 
-function DropdownMenu({ isOpen, setIsOpen }) {
+function DropdownMenu({ open, onClose }) {
   const {
     logout,
-    user: { profileImage, firstName, lastName }
+    user: { profileImage, firstName, lastName, id }
   } = useAuth();
   return (
     <ul
       className={`dropdown-menu end-0 px-2 mt-1 border shadow-sm rounded-xl w-sm-90${
-        isOpen ? " d-block" : ""
+        open ? " d-block" : ""
       }`}
     >
       <li>
         <Link
-          to="/profile"
+          to={`/profile/${id}`}
           className="dropdown-item p-2 d-flex align-items-center gap-3 hover-bg-neutral-100 hover-rounded-lg"
-          onClick={setIsOpen}
+          onClick={onClose}
         >
           <Avatar src={profileImage} size="60" />
+
           <div className="d-flex flex-column">
             <span className="text-black fw-bold">
               {firstName} {lastName}

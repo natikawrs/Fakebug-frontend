@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import DropdownToggle from "./DropdownToggle";
-import { useEffect, useRef, useState } from "react";
 
 function ProfileIcon() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,8 +19,8 @@ function ProfileIcon() {
   return (
     <div className="d-flex justify-content-end flex-1">
       <div className="dropdown" ref={dropdownEl}>
-        <DropdownToggle setIsOpen={() => setIsOpen((prev) => !prev)} />
-        <DropdownMenu isOpen={isOpen} setIsOpen={() => setIsOpen(false)} />
+        <DropdownToggle onClick={() => setIsOpen((prev) => !prev)} />
+        <DropdownMenu open={isOpen} onClose={() => setIsOpen(false)} />
       </div>
     </div>
   );

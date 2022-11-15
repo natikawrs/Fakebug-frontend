@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import * as authService from "../api/authApi";
+import * as userService from "../api/userApi";
 // import Spinner from "../components/ui/Spinner";
 import {
   addAccessToken,
@@ -58,9 +59,14 @@ function AuthContextProvider({ children }) {
 
   // if (initialLoading) return <Spinner />;
 
+  const updateUser = async (input) => {
+    const res = await userService.updateUser(input);
+    setUser(res.data.user);
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, register, login, logout, initialLoading }}
+      value={{ user, register, login, logout, initialLoading, updateUser }}
     >
       {children}
     </AuthContext.Provider>

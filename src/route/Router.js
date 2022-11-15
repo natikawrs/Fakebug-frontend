@@ -14,7 +14,6 @@ function Router() {
         <Route path="/" element={<AuthLayout />}>
           <Route path="/" element={<PostPage />} />
           <Route path="/friend" element={<FriendPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/profile/:id" element={<ProfilePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
@@ -22,7 +21,6 @@ function Router() {
         <>
           <Route path="/" element={<LoginPage />} />
           <Route path="*" element={<Navigate to="/" />} />
-          {/* <Route path="*" element={<LoginPage />} /> //เขียนอันนี้อันเดียวแทน 2 บรรทัดข้างบนได้ */}
         </>
       )}
     </Routes>
